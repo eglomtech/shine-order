@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shine Catering Ethio – Order</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;700&family=Noto+Sans+Ethiopic:wght@400;500;700&family=Noto+Serif+Ethiopic:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0F172A;--slate:#1E293B;--gold:#D99B26;--gold-ink:#8A5E0B;--cream:#FDFBF7;--sand:#EFE8D8;--line:#E4DCC8;--muted:#5B6474;--bad:#B3261E;--r:14px}
+*{box-sizing:border-box;margin:0}
+html{scroll-padding-top:70px}
+body{font:16px/1.5 "DM Sans","Noto Sans Ethiopic",sans-serif;background:var(--cream);color:var(--navy);padding-bottom:96px}
+h1,h2,h3{font-family:"Cormorant Garamond","Noto Serif Ethiopic",serif;line-height:1.15}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.wrap{max-width:720px;margin:0 auto;padding:0 18px}
+header{background:var(--navy);color:var(--cream);padding:18px 0 34px;background-image:radial-gradient(circle at 85% -20%,rgba(217,155,38,.28),transparent 55%)}
+.bar{display:flex;align-items:center;gap:12px}
+.logo{flex:none}
+.brand{font:700 1.35rem/1.1 "Cormorant Garamond","Noto Serif Ethiopic",serif}
+.tag{font-size:.8rem;color:#B9C0CE}
+.lang{margin-left:auto;display:flex;border:1px solid #475569;border-radius:99px;overflow:hidden}
+.lang button{background:none;border:0;padding:6px 12px;color:var(--cream);cursor:pointer;min-height:36px}
+.lang button[aria-pressed=true]{background:var(--gold);color:var(--navy);font-weight:700}
+.hero{margin-top:30px}
+.hero h1{font-size:clamp(2rem,7vw,2.9rem);max-width:14em}
+.hero p{margin-top:10px;color:#CBD2DE;max-width:34em}
+.tabs{position:sticky;top:0;z-index:5;background:var(--cream);border-bottom:1px solid var(--line)}
+.tabs .wrap{display:flex;gap:8px;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:none}
+.tabs a{flex:none;padding:8px 16px;border:1px solid var(--line);border-radius:99px;background:#fff;color:var(--navy);text-decoration:none;font-weight:500;min-height:40px}
+.tabs a.on{background:var(--navy);color:var(--cream);border-color:var(--navy)}
+section.cat{padding-top:26px}
+section.cat h2{font-size:1.7rem;margin-bottom:12px}
+.card{display:flex;gap:14px;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;margin-bottom:10px}
+.card h3{font:700 1.15rem/1.25 "DM Sans","Noto Sans Ethiopic",sans-serif}
+.card .u{font-size:.85rem;color:var(--muted)}
+.price{font-weight:700;color:var(--gold-ink);margin-top:2px}
+.add{background:var(--gold);border:0;border-radius:10px;padding:9px 20px;font-weight:700;color:var(--navy);cursor:pointer;min-height:44px}
+.step{display:flex;align-items:center;gap:6px}
+.step button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--sand);font-size:1.3rem;cursor:pointer}
+.step b{min-width:26px;text-align:center}
+.cartbar{position:fixed;left:50%;bottom:14px;transform:translateX(-50%);width:min(calc(100% - 28px),692px);display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--navy);color:var(--cream);border:0;border-radius:var(--r);padding:16px 18px;cursor:pointer;box-shadow:0 8px 24px rgba(15,23,42,.3);z-index:6}
+.cartbar:disabled{opacity:.85;cursor:default}
+.cartbar .go{color:var(--gold);font-weight:700}
+dialog{border:0;padding:0;width:100%;max-width:720px;max-height:92vh;margin:auto auto 0;border-radius:20px 20px 0 0;background:var(--cream);color:var(--navy)}
+dialog::backdrop{background:rgba(15,23,42,.6)}
+.sheet{padding:20px 18px 28px}
+.sh{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.sh h2{font-size:1.8rem}
+.x{background:var(--navy);color:var(--cream);border:0;border-radius:10px;padding:8px 16px;cursor:pointer;min-height:40px}
+.line{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.line input{width:100%;margin-top:6px}
+.rm{background:none;border:1px solid #E7B9B5;color:var(--bad);border-radius:99px;padding:4px 12px;cursor:pointer;height:34px;flex:none}
+fieldset{border:0;padding:0;margin-top:22px}
+legend{font:700 1.4rem "Cormorant Garamond","Noto Serif Ethiopic",serif;margin-bottom:8px}
+label{display:block;font-size:.88rem;font-weight:500;margin-top:12px}
+input,select,textarea{width:100%;margin-top:4px;padding:11px 12px;border:1px solid #C9BFA6;border-radius:10px;background:#fff;min-height:44px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.opt{display:flex;gap:10px;align-items:center;margin-top:8px;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff;font-weight:400;font-size:1rem}
+.opt input{width:auto;min-height:0;margin:0}
+.err{color:var(--bad);font-size:.85rem;min-height:0}
+.tot{margin-top:18px;padding:14px 16px;background:var(--sand);border-radius:var(--r)}
+.tot div{display:flex;justify-content:space-between}
+.tot .g{font-weight:700;font-size:1.2rem;margin-top:6px}
+.note{font-size:.85rem;color:var(--muted);margin-top:10px}
+.send{width:100%;margin-top:16px;background:var(--gold);border:0;border-radius:var(--r);padding:15px;font-weight:700;font-size:1.05rem;color:var(--navy);cursor:pointer}
+.send:disabled{opacity:.6}
+.done{text-align:center;padding:12px 0}
+.done h2{font-size:2rem}
+.ref{display:inline-block;margin:14px 0;padding:8px 18px;border:2px solid var(--gold);border-radius:99px;font-weight:700;letter-spacing:.04em}
+.done ul{list-style:none;padding:0;text-align:left;margin:10px 0}
+.done li{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--line)}
+[hidden]{display:none!important}
+@media (min-width:720px){dialog{margin:auto;border-radius:20px}}
+@media (prefers-reduced-motion:no-preference){.cartbar,.add{transition:transform .15s}.add:active{transform:scale(.96)}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="bar">
+      <!-- Placeholder monogram: swap for the client's logo file -->
+      <svg class="logo" width="52" height="52" viewBox="0 0 52 52" aria-hidden="true"><circle cx="26" cy="30" r="20" fill="none" stroke="#D99B26" stroke-width="2"/><g stroke="#D99B26" stroke-width="2" stroke-linecap="round"><path d="M26 2v6M14 6l3 5M38 6l-3 5M6 14l5 3M46 14l-5 3"/></g><text x="26" y="37" text-anchor="middle" font-family="Cormorant Garamond,serif" font-weight="700" font-size="20" fill="#FDFBF7">SC</text></svg>
+      <div><div class="brand">Shine Catering Ethio</div><div class="tag" data-i="tag"></div></div>
+      <div class="lang" role="group" aria-label="Language"><button data-lang="en" aria-pressed="true">EN</button><button data-lang="am" aria-pressed="false">አማ</button></div>
+    </div>
+    <div class="hero"><h1 data-i="hero"></h1><p id="notice"></p></div>
+  </div>
+</header>
+<nav class="tabs" aria-label="Menu categories"><div class="wrap" id="tabs"></div></nav>
+<main class="wrap" id="menu"></main>
+<button class="cartbar" id="cartbar" data-act="open" disabled><span id="cartsum"></span><span class="go" data-i="review"></span></button>
+
+<dialog id="dlg" aria-labelledby="dt">
+ <div class="sheet" id="form-view">
+  <div class="sh"><h2 id="dt" data-i="yourOrder"></h2><button class="x" data-act="close" data-i="close"></button></div>
+  <div id="lines"></div>
+  <form id="f" novalidate>
+   <fieldset><legend data-i="you"></legend>
+    <label><span data-i="name"></span><input id="name" autocomplete="name"></label><p class="err" id="e-name"></p>
+    <div class="two">
+     <div><label><span data-i="phone"></span><input id="phone" type="tel" autocomplete="tel" placeholder="0911 000 000"></label><p class="err" id="e-phone"></p></div>
+     <div><label><span data-i="email"></span><input id="email" type="email" autocomplete="email"></label></div>
+    </div>
+   </fieldset>
+   <fieldset><legend data-i="event"></legend>
+    <label><span data-i="etype"></span>
+     <select id="etype"><option value="wedding" data-i="wedding"></option><option value="corporate" data-i="corporate"></option><option value="party" data-i="party"></option><option value="other" data-i="other"></option></select></label>
+    <div class="two">
+     <div><label><span data-i="date"></span><input id="date" type="date"></label><p class="err" id="e-date"></p></div>
+     <div><label><span data-i="time"></span><input id="time" type="time" value="12:00"></label></div>
+    </div>
+    <label><span data-i="guests"></span><input id="guests" type="number" min="1" inputmode="numeric"></label><p class="err" id="e-guests"></p>
+    <label><span data-i="venue"></span><input id="venue" autocomplete="street-address"></label><p class="err" id="e-venue"></p>
+   </fieldset>
+   <fieldset><legend data-i="service"></legend>
+    <label class="opt"><input type="radio" name="svc" value="delivery" checked><span data-i="s1"></span></label>
+    <label class="opt"><input type="radio" name="svc" value="setup"><span data-i="s2"></span></label>
+    <label class="opt"><input type="radio" name="svc" value="pickup"><span data-i="s3"></span></label>
+   </fieldset>
+   <label><span data-i="notes"></span><textarea id="notes" rows="3"></textarea></label>
+   <div class="tot"><div><span data-i="sub"></span><span id="sub"></span></div><div class="g"><span data-i="total"></span><span id="tot"></span></div></div>
+   <p class="note" data-i="pay"></p><p class="err" id="e-cart"></p>
+   <button class="send" id="send" type="submit" data-i="send"></button>
+  </form>
+ </div>
+ <div class="sheet done" id="done-view" hidden>
+  <h2 data-i="sent"></h2>
+  <div class="ref"><span data-i="ref"></span> <span id="ref"></span></div>
+  <p data-i="sentMsg"></p>
+  <ul id="summary"></ul>
+  <button class="send" data-act="again" data-i="again"></button>
+ </div>
+</dialog>
+
+<script>
+/* ---- Config (owner will control these from the admin dashboard in step 3) ---- */
+const NOTICE_DAYS = 3;
+const BLOCKED_DATES = ['2026-12-25'];
+
+/* ---- Sample menu (client replaces later) ---- */
+const CATS = [
+ {id:'eth',en:'Ethiopian',am:'ባህላዊ'},{id:'fast',en:'Fasting',am:'የጾም'},{id:'intl',en:'International',am:'ዓለም አቀፍ'},{id:'sweet',en:'Desserts',am:'ጣፋጭ'},{id:'drink',en:'Drinks',am:'መጠጥ'}];
+const TRAY={en:'Tray',am:'ትሪ'};
+const ITEMS = [
+ {id:1,c:'eth',en:'Doro Wat',am:'ዶሮ ወጥ',p:4800,u:TRAY,s:10},
+ {id:2,c:'eth',en:'Key Wat',am:'ቀይ ወጥ',p:5200,u:TRAY,s:10},
+ {id:3,c:'eth',en:'Kitfo',am:'ክትፎ',p:5500,u:TRAY,s:10},
+ {id:4,c:'eth',en:'Injera (50 pieces)',am:'እንጀራ (50 ፍሬ)',p:1500,u:{en:'Pack',am:'ጥቅል'},s:null},
+ {id:5,c:'fast',en:'Shiro Wat',am:'ሽሮ ወጥ',p:2400,u:TRAY,s:10},
+ {id:6,c:'fast',en:'Misir Wat',am:'ምስር ወጥ',p:2300,u:TRAY,s:10},
+ {id:7,c:'fast',en:'Fasting Platter',am:'የጾም ምግብ ጥምር',p:3200,u:TRAY,s:10},
+ {id:8,c:'intl',en:'Chicken Alfredo Pasta',am:'ፓስታ በዶሮ',p:3600,u:TRAY,s:10},
+ {id:9,c:'intl',en:'Beef Lasagna',am:'የበሬ ሥጋ ላዛኛ',p:4200,u:TRAY,s:10},
+ {id:10,c:'intl',en:'Chicken and Rice',am:'ሩዝ በዶሮ',p:3400,u:TRAY,s:10},
+ {id:11,c:'sweet',en:'Baklava',am:'ባቅላባ',p:2800,u:TRAY,s:20},
+ {id:12,c:'sweet',en:'Fruit Platter',am:'የፍራፍሬ ሳህን',p:2200,u:{en:'Platter',am:'ሳህን'},s:10},
+ {id:13,c:'drink',en:'Coffee Ceremony Service',am:'የቡና ሥነ ሥርዓት አገልግሎት',p:1800,u:{en:'Service',am:'አገልግሎት'},s:null},
+ {id:14,c:'drink',en:'Fresh Juice (20 L)',am:'ትኩስ ጁስ (20 ሊትር)',p:1600,u:{en:'Dispenser',am:'ማሰራጫ'},s:null}];
+
+const T={
+en:{tag:'Catering for any event',hero:'Order catering for your event',notice:'Order at least {n} days ahead. We’ll confirm by phone.',review:'Review order',items:'items',yourOrder:'Your order',close:'Close',remove:'Remove',itemNote:'Note, e.g. no chili',you:'Your details',name:'Full name',phone:'Phone number',email:'Email (optional)',event:'Event details',etype:'Event type',wedding:'Wedding',corporate:'Corporate event',party:'Birthday or private party',other:'Other',date:'Event date',time:'Time',guests:'Number of guests',venue:'Venue and address',service:'Service',s1:'Delivery',s2:'Delivery with setup and serving staff',s3:'Pickup',notes:'Anything else we should know?',sub:'Subtotal',total:'Total',pay:'Payment is collected after we confirm your order.',send:'Send order',sent:'Order sent',ref:'Order',sentMsg:'Our team will call you to confirm. Payment is collected after confirmation.',again:'Start a new order',serves:'serves {n}',eName:'Enter your name.',ePhone:'Enter a valid Ethiopian phone number, like 0911 000 000.',eDate:'Choose a date at least {n} days from today.',eBlocked:'We’re not available on this date. Choose another date.',eGuests:'Enter the number of guests.',eVenue:'Enter the event venue.',eCart:'Add at least one item to your order.',eSend:'We couldn’t send your order. Check your connection and try again.'},
+am:{tag:'ለማንኛውም ዝግጅት የምግብ አገልግሎት',hero:'ለዝግጅትዎ ምግብ ያዝዙ',notice:'ቢያንስ {n} ቀን ቀደም ብለው ያዝዙ። ትዕዛዙን በስልክ እናረጋግጣለን።',review:'ትዕዛዝ ይመልከቱ',items:'እቃዎች',yourOrder:'የእርስዎ ትዕዛዝ',close:'ዝጋ',remove:'አስወግድ',itemNote:'ማስታወሻ፣ ለምሳሌ ያለ ቃሪያ',you:'የእርስዎ መረጃ',name:'ሙሉ ስም',phone:'ስልክ ቁጥር',email:'ኢሜይል (አማራጭ)',event:'የዝግጅቱ መረጃ',etype:'የዝግጅት ዓይነት',wedding:'ሠርግ',corporate:'የድርጅት ዝግጅት',party:'የልደት ወይም የግል ድግስ',other:'ሌላ',date:'የዝግጅቱ ቀን',time:'ሰዓት',guests:'የእንግዶች ብዛት',venue:'ቦታና አድራሻ',service:'አገልግሎት',s1:'ማድረስ',s2:'ማድረስ ከዝግጅትና ከአስተናጋጆች ጋር',s3:'ራስዎ መውሰድ',notes:'ሌላ ማወቅ ያለብን ነገር አለ?',sub:'ድምር',total:'ጠቅላላ',pay:'ክፍያው ትዕዛዝዎ ከተረጋገጠ በኋላ ይሰበሰባል።',send:'ትዕዛዝ ላክ',sent:'ትዕዛዝዎ ተልኳል',ref:'ቁጥር',sentMsg:'ቡድናችን ለማረጋገጥ በስልክ ይደውልልዎታል። ክፍያው ከማረጋገጫ በኋላ ይሰበሰባል።',again:'አዲስ ትዕዛዝ ጀምር',serves:'ለ{n} ሰው',eName:'ስምዎን ያስገቡ።',ePhone:'ትክክለኛ የኢትዮጵያ ስልክ ቁጥር ያስገቡ፣ ለምሳሌ 0911 000 000።',eDate:'ከዛሬ ቢያንስ {n} ቀን በኋላ ያለ ቀን ይምረጡ።',eBlocked:'በዚህ ቀን አገልግሎት አንሰጥም። ሌላ ቀን ይምረጡ።',eGuests:'የእንግዶችን ብዛት ያስገቡ።',eVenue:'የዝግጅቱን ቦታ ያስገቡ።',eCart:'ቢያንስ አንድ እቃ ወደ ትዕዛዝዎ ይጨምሩ።',eSend:'ትዕዛዝዎን መላክ አልተቻለም። ግንኙነትዎን ያረጋግጡና እንደገና ይሞክሩ።'}};
+
+let lang='en', cart={}, lastOrder=null;
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const t=(k,n)=>T[lang][k].replace('{n}',n??NOTICE_DAYS);
+const etb=n=>n.toLocaleString('en-US')+' ETB';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const iso=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+const minDate=()=>{const d=new Date();d.setDate(d.getDate()+NOTICE_DAYS);return iso(d)};
+const total=()=>ITEMS.reduce((s,i)=>s+(cart[i.id]?cart[i.id].q*i.p:0),0);
+const count=()=>Object.values(cart).reduce((s,x)=>s+x.q,0);
+
+function applyLang(){
+  document.documentElement.lang=lang;
+  $$('[data-i]').forEach(e=>e.textContent=t(e.dataset.i));
+  $('#notice').textContent=t('notice');
+  $$('.err').forEach(e=>e.textContent='');
+  $$('[data-lang]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.lang===lang));
+  $('#tabs').innerHTML=CATS.map((c,i)=>`<a href="#cat-${c.id}" class="${i?'':'on'}">${c[lang]}</a>`).join('');
+  renderMenu();renderCart();
+}
+function renderMenu(){
+  $('#menu').innerHTML=CATS.map(c=>`<section class="cat" id="cat-${c.id}"><h2>${c[lang]}</h2>`+
+   ITEMS.filter(i=>i.c===c.id).map(i=>{
+    const q=cart[i.id]?.q||0;
+    return `<div class="card"><div><h3>${i[lang]}</h3><div class="u">${i.u[lang]}${i.s?' · '+t('serves',i.s):''}</div><div class="price">${etb(i.p)}</div></div>`+
+     (q?`<div class="step"><button data-act="dec" data-id="${i.id}" aria-label="−">−</button><b>${q}</b><button data-act="inc" data-id="${i.id}" aria-label="+">+</button></div>`
+       :`<button class="add" data-act="inc" data-id="${i.id}">${lang==='en'?'Add':'ጨምር'}</button>`)+`</div>`;
+   }).join('')+`</section>`).join('');
+}
+function renderCart(){
+  const n=count(), s=total();
+  $('#cartsum').textContent=`${n} ${t('items')} | ${etb(s)}`;
+  $('#cartbar').disabled=!n;
+  $('#sub').textContent=$('#tot').textContent=etb(s);
+  $('#lines').innerHTML=ITEMS.filter(i=>cart[i.id]).map(i=>{const x=cart[i.id];return `<div class="line"><div style="flex:1"><b>${x.q}× ${i[lang]}</b><div class="price">${etb(x.q*i.p)}</div><input data-note="${i.id}" value="${esc(x.n)}" placeholder="${t('itemNote')}" aria-label="${t('itemNote')}"></div><button class="rm" data-act="rm" data-id="${i.id}">${t('remove')}</button></div>`}).join('');
+}
+function change(id,d){const x=cart[id]||(cart[id]={q:0,n:''});x.q+=d;if(x.q<=0)delete cart[id];renderMenu();renderCart();if(!count())$('#dlg').open&&$('#dlg').close()}
+function validate(){
+  const v=id=>$('#'+id).value.trim(), e={};
+  if(!count())e.cart='eCart';
+  if(!v('name'))e.name='eName';
+  if(!/^(\+251|0)[79]\d{8}$/.test(v('phone').replace(/[\s-]/g,'')))e.phone='ePhone';
+  if(!v('date')||v('date')<minDate())e.date='eDate';
+  else if(BLOCKED_DATES.includes(v('date')))e.date='eBlocked';
+  if(!(+v('guests')>0))e.guests='eGuests';
+  if(!v('venue'))e.venue='eVenue';
+  ['cart','name','phone','date','guests','venue'].forEach(k=>$('#e-'+k).textContent=e[k]?t(e[k]):'');
+  const first=Object.keys(e)[0];if(first&&first!=='cart')$('#'+first).focus();
+  return !Object.keys(e).length;
+}
+/* Replaced by the Firebase save function in the module script below. If Firebase fails to load, sending fails visibly instead of pretending to work. */
+window.submitOrder=async()=>{throw new Error('Firebase not loaded')};
+
+document.addEventListener('click',ev=>{
+  const b=ev.target.closest('[data-act],[data-lang]');if(!b)return;
+  if(b.dataset.lang){lang=b.dataset.lang;applyLang();return}
+  const a=b.dataset.act,id=+b.dataset.id;
+  if(a==='inc')change(id,1);
+  if(a==='dec')change(id,-1);
+  if(a==='rm')change(id,-cart[id].q);
+  if(a==='open'){$('#form-view').hidden=false;$('#done-view').hidden=true;$('#date').min=minDate();$('#dlg').showModal()}
+  if(a==='close')$('#dlg').close();
+  if(a==='again'){cart={};$('#f').reset();$('#dlg').close();applyLang()}
+});
+document.addEventListener('input',ev=>{if(ev.target.dataset.note)cart[ev.target.dataset.note].n=ev.target.value});
+$('#f').addEventListener('submit',async ev=>{
+  ev.preventDefault();if(!validate())return;
+  const btn=$('#send');btn.disabled=true;
+  const v=id=>$('#'+id).value.trim();
+  const order={ref:'SC-'+Math.random().toString(36).slice(2,7).toUpperCase(),status:'New',createdAt:new Date().toISOString(),lang,
+   customer:{name:v('name'),phone:v('phone'),email:v('email')},
+   event:{type:v('etype'),date:v('date'),time:v('time'),guests:+v('guests'),venue:v('venue')},
+   service:$('input[name=svc]:checked').value,notes:v('notes'),total:total(),
+   items:ITEMS.filter(i=>cart[i.id]).map(i=>({id:i.id,name:i.en,qty:cart[i.id].q,price:i.p,note:cart[i.id].n}))};
+  try{await window.submitOrder(order)}catch(err){console.error(err);$('#e-cart').textContent=t('eSend');btn.disabled=false;return}
+  btn.disabled=false;
+  $('#ref').textContent=order.ref;
+  $('#summary').innerHTML=ITEMS.filter(i=>cart[i.id]).map(i=>`<li><span>${cart[i.id].q}× ${i[lang]}</span><span>${etb(cart[i.id].q*i.p)}</span></li>`).join('')+`<li><b>${t('total')}</b><b>${etb(order.total)}</b></li>`;
+  $('#form-view').hidden=true;$('#done-view').hidden=false;$('#dlg').scrollTop=0;
+});
+/* highlight active category tab while scrolling */
+function markTab(){
+  let cur=CATS[0].id;
+  $$('section.cat').forEach(sec=>{if(sec.getBoundingClientRect().top<140)cur=sec.id.slice(4)});
+  $$('.tabs a').forEach(a=>a.classList.toggle('on',a.hash==='#cat-'+cur));
+}
+addEventListener('scroll',markTab,{passive:true});
+applyLang();
+</script>
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
+import {getFirestore,collection,addDoc,serverTimestamp} from "https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js";
+const app=initializeApp({
+  apiKey:"AIzaSyBItrNj7SebgB88xlnVO1I2Us67VV_rTgM",
+  authDomain:"shine-catering.firebaseapp.com",
+  projectId:"shine-catering",
+  storageBucket:"shine-catering.firebasestorage.app",
+  messagingSenderId:"121109086833",
+  appId:"1:121109086833:web:d9a496d24f0680fb4551d0"
+});
+const db=getFirestore(app);
+/* Saves the order to Firestore. The server sets the timestamp. */
+const ALERT_URL="https://script.google.com/macros/s/AKfycbwGpWz_dTm7MuqRhnIJN60KVFpAU2QMW-NdhMW4VHNI5X0FV049mDif7I0HzTTWCaig/exec";
+const ALERT_SECRET="Ho1sKh49X-FvCgaVztq9Q1aEneRhr1K7";
+window.submitOrder=async order=>{
+  await addDoc(collection(db,'orders'),{...order,createdAt:serverTimestamp()});
+  /* Telegram + email alert to the owner. The order is already saved, so an alert failure must not fail the order. */
+  try{
+    fetch(ALERT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify({secret:ALERT_SECRET,order})}).catch(()=>{});
+  }catch(e){}
+  return order;
+};
+</script>
+</body>
+</html>
